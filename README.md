@@ -1,118 +1,81 @@
-# 🌿 Plant Disease Detection using CNN
+# 🌿 Plant Disease Detection Using CNN
 
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-orange.svg)](https://www.tensorflow.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Web%20App-red.svg)](https://streamlit.io/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+A deep learning web application for detecting **tomato leaf diseases** from images using a custom **Convolutional Neural Network (CNN)** built with **TensorFlow/Keras** and deployed with **Streamlit**.
 
-A deep learning web application that detects **tomato leaf diseases** using a Convolutional Neural Network (CNN) built with TensorFlow/Keras and deployed through Streamlit.
+The application classifies tomato leaf images into three categories:
 
-The application classifies uploaded tomato leaf images into three categories:
+- 🦠 **Tomato Early Blight**
+- 🦠 **Tomato Late Blight**
+- ✅ **Tomato Healthy**
 
-- 🦠 **Early Blight**
-- 🦠 **Late Blight**
-- ✅ **Healthy**
+> ⚠️ **Disclaimer:** This project is intended for educational and experimental purposes. Predictions should not be treated as a substitute for professional agricultural diagnosis.
 
 ---
 
-## 📑 Table of Contents
+## 🚀 Live Demo
 
-- [🚀 Demo](#-demo)
-- [📌 Project Overview](#-project-overview)
-- [✨ Features](#-features)
-- [📊 Model Performance](#-model-performance)
-- [🗂️ Dataset](#️-dataset)
-- [🧠 Model Architecture](#-model-architecture)
-- [🔄 Data Augmentation](#-data-augmentation)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [📁 Project Structure](#-project-structure)
-- [🚀 Installation & Setup](#-installation--setup)
-- [🧪 Training the Model](#-training-the-model)
-- [💻 Running the Web Application](#-running-the-web-application)
-- [🖼️ How to Use](#️-how-to-use)
-- [📈 Training Configuration](#-training-configuration)
-- [🔬 Experiments](#-experiments)
-- [🔮 Future Improvements](#-future-improvements)
-- [📚 What I Learned](#-what-i-learned)
-- [⚠️ Limitations](#️-limitations)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [🙏 Acknowledgments](#-acknowledgments)
-- [👨‍💻 Author](#-author)
+Try the deployed Streamlit application here:
 
----
-
-## 🚀 Demo
-
-The application provides an interactive interface where users can:
-
-1. Upload a tomato leaf image
-2. Run the trained CNN model
-3. View the predicted disease
-4. See the model's confidence score
-5. View probability distribution across all three classes
-6. Get basic disease information and recommendations
+🔗 **[Plant Disease Detection App](https://plant-disease-detection-cnn-mahadi.streamlit.app/)**
 
 ---
 
 ## 📌 Project Overview
 
-Plant diseases can significantly affect crop production and agricultural productivity. This project explores how **Computer Vision and Deep Learning** can be used to automatically identify diseases from plant leaf images.
+Plant diseases can significantly reduce crop yield and quality. Early detection is important for timely treatment and better crop management.
 
-A CNN was trained on the **PlantVillage dataset** to classify tomato leaves into three categories.
+This project demonstrates how **Computer Vision** and **Deep Learning** can be used to automatically classify tomato leaf images into healthy or diseased categories. A custom CNN model was trained using selected tomato classes from the **PlantVillage dataset**.
 
-The final CNN model achieved approximately **92.30% test accuracy** after applying data augmentation.
+The best-performing model in this experiment was a **CNN with data augmentation**, achieving approximately **92.30% test accuracy** on the project test dataset.
 
 ---
 
 ## ✨ Features
 
-- 🌿 Tomato leaf image classification
-- 🧠 CNN-based deep learning model
-- 📊 Confidence score for predictions
-- 📈 Class-wise probability visualization
-- 🖼️ JPG/PNG image upload support
-- 💻 Interactive Streamlit interface
-- 🔬 Model evaluation using precision, recall, and F1-score
-- 📚 Disease information and recommendations
+- Upload tomato leaf images in **JPG, JPEG, or PNG** format
+- Classify images into Early Blight, Late Blight, or Healthy
+- Display predicted class with confidence score
+- Show probability distribution across all classes
+- Provide basic disease information and recommendations
+- Interactive and user-friendly Streamlit interface
+- Trained using a custom CNN architecture
+- Evaluation using accuracy, precision, recall, F1-score, and confusion matrix
+- Online deployment using Streamlit Community Cloud
 
 ---
 
 ## 📊 Model Performance
 
-Three different approaches were experimented with during development.
+Three model approaches were tested during development:
 
-| Model Version | Technique | Test Accuracy |
-|---------------|-----------|---------------|
+| Version | Technique | Test Accuracy |
+|---|---:|---:|
 | V1 | Basic CNN | 91.85% |
-| V2 | CNN + Data Augmentation | **92.30%** ⭐ |
-| V3 | Transfer Learning — MobileNetV2 | 90.07% |
+| V2 | CNN + Data Augmentation | **92.30%** |
+| V3 | MobileNetV2 Transfer Learning | 90.07% |
 
-The **CNN + Data Augmentation** model was selected as the final model because it achieved the highest test accuracy.
+The **CNN + Data Augmentation** model was selected as the final model because it achieved the highest test accuracy in this experiment.
 
 ### Per-Class Performance
 
 | Class | Precision | Recall | F1-Score |
-|-------|-----------|--------|----------|
+|---|---:|---:|---:|
 | Early Blight | 84% | 85% | 84% |
 | Late Blight | 95% | 90% | 92% |
 | Healthy | 95% | 100% | 97% |
 
-> **Note:** Performance depends on the dataset and testing conditions. Predictions on real-world photographs may differ from results obtained on the PlantVillage dataset.
+> These results are based on the project's test dataset. Real-world performance may vary due to differences in lighting, background, image quality, disease stage, and camera conditions.
 
 ---
 
 ## 🗂️ Dataset
 
-This project uses the **PlantVillage dataset**.
+This project uses selected tomato classes from the **PlantVillage dataset**.
 
-- **Dataset:** PlantVillage — Tomato Leaf Disease Images
-- **Source:** Kaggle
+### Classes Used
 
-The project uses three tomato-related classes:
-
-| Class | Images |
-|-------|--------|
+| Class | Number of Images |
+|---|---:|
 | Tomato Early Blight | 1,000 |
 | Tomato Late Blight | 1,909 |
 | Tomato Healthy | 1,591 |
@@ -120,64 +83,72 @@ The project uses three tomato-related classes:
 
 ### Dataset Split
 
-The dataset was divided into:
+| Split | Percentage | Images |
+|---|---:|---:|
+| Training | 70% | 3,150 |
+| Validation | 15% | 675 |
+| Testing | 15% | 675 |
 
-- **Training:** 70% — 3,150 images
-- **Validation:** 15% — 675 images
-- **Testing:** 15% — 675 images
+### Expected Dataset Structure
+
+For local training, organize the dataset as follows:
+
+```text
+PlantVillage/
+├── Tomato_Early_blight/
+├── Tomato_Late_blight/
+└── Tomato_healthy/
+```
+
+The dataset is required only for training and evaluation. It does **not** need to be included in the deployed Streamlit application.
 
 ---
 
 ## 🧠 Model Architecture
 
-The final model is a custom Convolutional Neural Network.
+The final model is a custom Convolutional Neural Network designed for three-class tomato leaf classification.
 
 ```text
-Input Image
-128 × 128 × 3
-    │
-    ▼
-┌─────────────────────────┐
-│ Conv2D (32 filters)     │
-│ + MaxPooling2D          │
-└─────────────────────────┘
-    │
-    ▼
-┌─────────────────────────┐
-│ Conv2D (64 filters)     │
-│ + MaxPooling2D          │
-└─────────────────────────┘
-    │
-    ▼
-┌─────────────────────────┐
-│ Conv2D (128 filters)    │
-│ + MaxPooling2D          │
-└─────────────────────────┘
-    │
-    ▼
-┌─────────────────────────┐
-│ Flatten                 │
-└─────────────────────────┘
-    │
-    ▼
-┌─────────────────────────┐
-│ Dense (128)             │
-│ Dropout (0.5)           │
-└─────────────────────────┘
-    │
-    ▼
-┌─────────────────────────┐
-│ Dense (3) + Softmax     │
-└─────────────────────────┘
-    │
-    ▼
+Input Image: 128 × 128 × 3
+        │
+        ▼
+Conv2D: 32 filters, ReLU
+        │
+        ▼
+MaxPooling2D
+        │
+        ▼
+Conv2D: 64 filters, ReLU
+        │
+        ▼
+MaxPooling2D
+        │
+        ▼
+Conv2D: 128 filters, ReLU
+        │
+        ▼
+MaxPooling2D
+        │
+        ▼
+Flatten
+        │
+        ▼
+Dense: 128 units, ReLU
+        │
+        ▼
+Dropout: 0.5
+        │
+        ▼
+Dense: 3 units, Softmax
+        │
+        ▼
 Prediction
 ```
 
 ### Model Configuration
 
 | Parameter | Value |
-|-----------|-------|
+|---|---:|
 | Input Size | 128 × 128 × 3 |
 | Output Classes | 3 |
 | Optimizer | Adam |
@@ -191,15 +162,17 @@ Prediction
 
 ## 🔄 Data Augmentation
 
-To improve generalization and reduce overfitting, the final CNN model uses data augmentation techniques.
+Data augmentation was applied to improve model generalization and reduce overfitting.
 
-The following transformations were applied:
+The training pipeline included:
 
-- 🔄 Rotation — ±25°
-- ↔️ Width shift — ±10%
-- ↕️ Height shift — ±10%
-- 🔍 Zoom — ±15%
-- 🔃 Horizontal flipping
+- Rotation: ±25°
+- Width shift: ±10%
+- Height shift: ±10%
+- Zoom: ±15%
+- Horizontal flip
+
+These transformations help the model learn more robust visual patterns instead of memorizing specific image positions or orientations.
 
 ---
 
@@ -207,84 +180,73 @@ The following transformations were applied:
 
 ### Programming Language
 
-- **Python 3.10+**
+- Python
 
 ### Machine Learning / Deep Learning
 
-- **TensorFlow**
-- **Keras**
-- **Scikit-learn**
+- TensorFlow
+- Keras
+- Scikit-learn
 
 ### Data Processing
 
-- **NumPy**
-- **Pandas**
-- **Pillow**
+- NumPy
+- Pandas
+- Pillow
 
 ### Visualization
 
-- **Matplotlib**
-- **Seaborn**
+- Matplotlib
+- Seaborn
 
 ### Web Application
 
-- **Streamlit**
+- Streamlit
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-plant-disease-detection/
+plant-disease-detection-cnn/
 │
-├── PlantVillage/
-│   ├── Tomato_Early_blight/
-│   ├── Tomato_Late_blight/
-│   └── Tomato_healthy/
+├── app.py                      # Streamlit web application
+├── notebook.ipynb              # Training, experiments, and evaluation
+├── plant_disease_final.keras   # Final trained CNN model
+├── requirements.txt            # Python dependencies
+├── README.md                   # Project documentation
+├── LICENSE                     # MIT License
+├── .gitignore                  # Ignored files and folders
 │
-├── notebook.ipynb
-├── app.py
-├── plant_disease_final.keras
-├── requirements.txt
-├── README.md
-└── LICENSE
+└── PlantVillage/               # Local training dataset only
+    ├── Tomato_Early_blight/
+    ├── Tomato_Late_blight/
+    └── Tomato_healthy/
 ```
 
-### File Description
-
-| File / Folder | Description |
-|---------------|-------------|
-| `PlantVillage/` | Dataset directory |
-| `notebook.ipynb` | Model training and experimentation |
-| `app.py` | Streamlit web application |
-| `plant_disease_final.keras` | Trained CNN model |
-| `requirements.txt` | Python dependencies |
-| `README.md` | Project documentation |
-| `LICENSE` | MIT License |
+> The `PlantVillage/` directory is required only for local training and should not be uploaded to GitHub.
 
 ---
 
-## 🚀 Installation & Setup
+## 🚀 Installation and Setup
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/mahadiurrehman-pixel/plant-disease-detection.git
-cd plant-disease-detection
+git clone https://github.com/mahadiurrehman-pixel/plant-disease-detection-cnn.git
+cd plant-disease-detection-cnn
 ```
 
 ### 2. Create a Virtual Environment
 
-Creating a virtual environment is recommended to keep project dependencies isolated.
-
-**Linux / macOS:**
+#### Linux / macOS
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-**Windows:**
+#### Windows
 
 ```bash
 python -m venv venv
@@ -297,11 +259,9 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 4. Download the Dataset
+### 4. Add the Dataset for Training
 
-Download the PlantVillage dataset from Kaggle and extract the required tomato classes into the project directory.
-
-The expected structure is:
+Download the PlantVillage dataset from Kaggle and place the required tomato classes in the following structure:
 
 ```text
 PlantVillage/
@@ -314,26 +274,31 @@ PlantVillage/
 
 ## 🧪 Training the Model
 
-If you want to train the model from scratch:
+To train the CNN model from scratch:
 
-1. Open `notebook.ipynb`
-2. Make sure the dataset is available
-3. Install all dependencies
-4. Run the notebook cells sequentially
-5. Evaluate the trained model
-6. Save the final model as `plant_disease_final.keras`
+1. Open `notebook.ipynb`.
+2. Make sure the dataset is available in the correct directory structure.
+3. Install all required dependencies.
+4. Run the notebook cells sequentially.
+5. Train and evaluate the model.
+6. Compare experiment results.
+7. Save the final model as:
+
+```text
+plant_disease_final.keras
+```
 
 ---
 
 ## 💻 Running the Web Application
 
-After installing the dependencies and making sure the trained model exists, run:
+After installing dependencies and adding the trained model file, run:
 
 ```bash
 streamlit run app.py
 ```
 
-The application will normally be available at:
+The application will be available locally at:
 
 ```text
 http://localhost:8501
@@ -343,143 +308,141 @@ http://localhost:8501
 
 ## 🖼️ How to Use
 
-### Step 1 — Upload an Image
-
-Upload a tomato leaf image in JPG or PNG format.
-
-### Step 2 — Run Prediction
-
-Click the **Predict Disease** button.
-
-### Step 3 — View Results
-
-The application displays:
-
-- Predicted disease
-- Confidence score
-- Probability of each class
-- Disease information
-- Basic recommendations
-
----
-
-## 📈 Training Configuration
-
-The final model was trained using the following configuration:
-
-```text
-Optimizer:   Adam
-Loss:        Categorical Crossentropy
-Batch Size:  32
-Epochs:      15
-Image Size:  128 × 128 × 3
-```
+1. Open the Streamlit web application.
+2. Upload a tomato leaf image in JPG, JPEG, or PNG format.
+3. Click the prediction button.
+4. View the predicted class and confidence score.
+5. Check the probability distribution for all classes.
+6. Read the basic disease information and recommendations.
 
 ---
 
 ## 🔬 Experiments
 
-During development, multiple approaches were tested.
-
 ### V1 — Basic CNN
 
-A simple CNN architecture was trained without extensive augmentation.
+A custom CNN model was trained without the final augmentation strategy.
 
 **Test Accuracy:** 91.85%
 
-### V2 — CNN + Data Augmentation
+### V2 — CNN with Data Augmentation
 
-Data augmentation was introduced to improve generalization.
+Data augmentation was introduced to improve generalization and reduce overfitting.
 
-**Test Accuracy:** **92.30%**
+**Test Accuracy:** 92.30%
 
-This version achieved the best performance and was selected as the final model.
+This version achieved the highest test accuracy and was selected as the final model.
 
 ### V3 — MobileNetV2 Transfer Learning
 
-Transfer learning using MobileNetV2 was also experimented with.
+MobileNetV2 transfer learning was also tested.
 
 **Test Accuracy:** 90.07%
 
-Although transfer learning can be highly effective, this implementation performed worse than the custom CNN for this particular experiment. The lower performance is likely due to using 128 × 128 input size instead of MobileNetV2's optimal 224 × 224.
+In this experiment, MobileNetV2 performed lower than the custom CNN. One possible reason is the use of 128 × 128 input images, whereas transfer learning models often benefit from higher-resolution inputs and careful fine-tuning.
 
 ---
 
 ## 🔮 Future Improvements
 
-The project can be extended in several ways:
+Possible improvements for future versions include:
 
-- 🌱 Add more plant species such as potato and pepper
-- 🦠 Add more disease classes
-- 🧠 Experiment with stronger CNN architectures
-- 📐 Increase input resolution to 224 × 224
-- 🔬 Add Grad-CAM visualizations
-- ☁️ Deploy the application online
-- 📱 Build a mobile application
-- 🌐 Add Urdu, Hindi, and English language support
-- 📊 Add model monitoring and analytics
-- 🔍 Improve performance on real-world field images
+- Add more tomato disease classes
+- Support additional plant species
+- Train on more real-world field images
+- Experiment with higher image resolutions
+- Add Grad-CAM visual explanations
+- Improve the transfer learning pipeline
+- Add multilingual support
+- Build a mobile application
+- Add model monitoring and analytics
+- Improve deployment for production use
 
 ---
 
 ## 📚 What I Learned
 
-Through this project, I practiced and learned:
+This project helped strengthen practical knowledge in:
 
-- Building CNNs from scratch
-- Image preprocessing
-- Image classification
-- Data augmentation
-- Dataset splitting
-- Handling class imbalance
-- Model training and validation
-- Transfer learning with MobileNetV2
-- Confusion matrices
-- Precision, recall, and F1-score
+### Machine Learning
+
+- Dataset preparation
+- Train/validation/test splitting
+- Classification workflows
 - Model evaluation
+- Precision, recall, and F1-score
+- Confusion matrix analysis
+
+### Deep Learning
+
+- CNN architecture design
+- Convolution and pooling layers
+- Flatten and dense layers
+- Dropout regularization
+- Softmax classification
+- Categorical crossentropy
+- Adam optimization
+
+### Computer Vision
+
+- Image preprocessing
+- Image resizing
+- Pixel normalization
+- Data augmentation
+- Image classification
+
+### Deployment
+
 - Saving and loading Keras models
-- Building ML applications with Streamlit
-- Deploying machine learning models as interactive applications
+- Building Streamlit applications
+- Deploying ML apps online
 
 ---
 
 ## ⚠️ Limitations
 
-This project is primarily an educational and experimental machine learning project.
+This project was trained using PlantVillage images, which are generally captured in controlled conditions.
 
-The model was trained using the PlantVillage dataset, which consists of controlled leaf images. Real-world agricultural images may contain different lighting conditions, backgrounds, camera qualities, leaf orientations, and disease stages.
+Real-world agricultural images may include:
 
-Therefore, the model's prediction should **not be treated as a professional agricultural diagnosis**.
+- Uneven or low lighting
+- Complex backgrounds
+- Different camera qualities
+- Multiple leaves in one image
+- Different leaf orientations
+- Early or advanced disease stages
+- Multiple diseases on the same plant
+
+Because of these factors, predictions may be less reliable on real-world field images.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome!
+Contributions are welcome. To contribute:
 
-If you would like to improve the project:
-
-1. Fork the repository
-2. Create a new branch
+1. Fork the repository.
+2. Create a new branch:
 
 ```bash
-git checkout -b feature/your-feature
+git checkout -b feature/your-feature-name
 ```
 
-3. Make your changes
-4. Commit your changes
+3. Make your changes.
+4. Commit your changes:
 
 ```bash
+git add .
 git commit -m "Add your feature"
 ```
 
-5. Push the branch
+5. Push to your branch:
 
 ```bash
-git push origin feature/your-feature
+git push origin feature/your-feature-name
 ```
 
-6. Open a Pull Request
+6. Open a Pull Request.
 
 ---
 
@@ -496,10 +459,10 @@ See the `LICENSE` file for more information.
 Special thanks to:
 
 - **PlantVillage** for the plant disease dataset
-- **Kaggle** for making the dataset accessible
+- **Kaggle** for dataset accessibility
 - **TensorFlow/Keras** for the deep learning framework
-- **Streamlit** for providing an easy way to build the web application
-- **Scikit-learn** for model evaluation tools
+- **Streamlit** for the web application framework
+- **Scikit-learn** for evaluation utilities
 
 ---
 
@@ -507,5 +470,13 @@ Special thanks to:
 
 **Mahadi Ur Rehman**
 
-- **GitHub:** [@mahadiurrehman-pixel](https://github.com/mahadiurrehman-pixel)
-- **Email:** [mahadiurrehman@gmail.com](mailto:mahadiurrehman@gmail.com)
+Aspiring AI/ML Developer interested in Artificial Intelligence, Machine Learning, Computer Vision, NLP, and AI Product Development.
+
+- GitHub: [mahadiurrehman-pixel](https://github.com/mahadiurrehman-pixel)
+- Email: [mahadiurrehman@gmail.com](mailto:mahadiurrehman@gmail.com)
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving the repository a star and sharing it with others interested in AI, Machine Learning, and Computer Vision.
